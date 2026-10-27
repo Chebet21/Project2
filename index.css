@@ -1,0 +1,19 @@
+body {
+    background-color: pink;
+    font-family: monospace;
+    
+
+}
+
+#top {
+    width: fit-content;
+    height: 100px;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(132, 92, 98);
+    margin-bottom: 40px;
+
+}
