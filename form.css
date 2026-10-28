@@ -3,14 +3,34 @@ body {
     padding: 10px;
 }
 
+#button {
+    margin: 10px;
+    display: flex;
+    justify-content: left;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(139, 184, 91);
+    text-decoration: none;
+    text-align: center;
+}
+
 #top {
     margin: 10px;
 }
 
 #header2 {
     margin: 10px;
+    background-color: palevioletred;
 }
 
 #form1 {
     margin: auto;
+    background-color: rgb(153, 191, 83);
+    padding: 20px;
+    justify-content: center;
+    align-items:center;
+
 }

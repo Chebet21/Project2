@@ -16,3 +16,7 @@ body {
 .button-link:hover {
     background-color: rgb(52, 87, 47);
 }
+
+p {
+    font-size: larger;
+}

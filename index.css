@@ -13,13 +13,17 @@ body {
 #header {
     display: flex;
     justify-content: center;
-    background-color: rgb(132, 92, 98);
+    background-color: rgba(228, 119, 212, 0.715);
     margin-bottom: 40px;
 
 }
 
 #search{
     margin: 10px;
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    background-image: none;
 }
 
 #button {
