@@ -79,3 +79,16 @@ function addProcedure(){
     }
 }
 
+const imageInput = document.getElementById('imageInput');
+const imgPreview = document.getElementById('imgPreview');
+
+imageInput.addEventListener('change', function(){
+    const file = this.file[0];
+
+    if (file){
+        const objectURL = URL.createObjectURL(file);
+
+        imgPreview.src = objectURL;
+        imgPreview.style.display = 'block';
+    }
+})
