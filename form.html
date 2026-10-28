@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link ref="stylesheet" src="/form.css">
 </head>
 <body>
-    <div>
+    <div id="top">
+        <img url="">
+    </div>
+    <div id="header2">
         <header>
             <p>
                 <h1>Add your recipe</h1>
             </p>
         </header>
     </div>
-    <p>Write your full recipe to share with others!</p>
+    <p id="par">Write your full recipe to share with others!</p>
     <div>
-        <form>
+        <form id="form1">
+            <label>Recipe title:</label>
+            <input type="text">
+
+            <br>
+
+        
             <label>Photo</label>
             <input type="url">
 
@@ -35,5 +45,6 @@
 
         </form>
     </div>
+<script src="/index.js"></script>
 </body>
 </html>
