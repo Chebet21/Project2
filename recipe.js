@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         recipeTTL.textContent = activeRecipe.Title;
         recipeING.textContent = activeRecipe.Ingredients || 'No Ingredients';
-        recipePRC.textContent = activeRecipe.Precedure || 'No Procedure';
+        recipePRC.textContent = activeRecipe.Procedure || 'No Procedure';
 
         if (eraseBtn) {
             eraseBtn.addEventListener('click', function(){
