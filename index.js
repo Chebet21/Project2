@@ -41,12 +41,13 @@ const searchInput = document.getElementById('search');
 if (searchInput){
     
     searchInput.addEventListener('input', function(event){
-        const searchTerm = event.target.value.toLowercase();
+        const searchTerm = event.target.value.toLowerCase();
 
         const filterArray = formArray.filter(recipe => {
-            const recipeTitle = (recipe.Title || '').toLowercase();
+            const recipeTitle = (recipe.Title || '').toLowerCase();
             return recipeTitle.includes(searchTerm);
         });
+
         renderList(filterArray)
     });
 }

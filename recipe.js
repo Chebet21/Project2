@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const recipeTTL = document.getElementById('recipettl');
     const recipeING = document.getElementById('recipeIng');
     const recipePRC = document.getElementById('recipePrc');
+    const eraseBtn = document.getElementById('eraseBtn')
 
     if(selectedIndex !==null && formArray[selectedIndex]) {
         const activeRecipe = formArray[selectedIndex];
@@ -14,8 +15,19 @@ document.addEventListener('DOMContentLoaded', function(){
         recipeING.textContent = activeRecipe.Ingredients || 'No Ingredients';
         recipePRC.textContent = activeRecipe.Precedure || 'No Procedure';
 
+        if (eraseBtn) {
+            eraseBtn.addEventListener('click', function(){
+                if(confirm("Are you sure you wat to delete this recipe?")){
+                    formArray.splice(selectedIndex, 1);
+                    localStorage.setItem("userFormData", JSON.stringify(formArray));
+                    window.location.href = "index.html";
+                }
+            });
+        }
+
         console.log ("this is what i am seeing", activeRecipe)
-    } else (
-        recipeTTL.textContent = "Recipe not found"
-    )
+    } else {
+        recipeTTL.textContent = "Recipe not found";
+        if (eraseBtn) eraseBtn.style.display = 'none'
+        }
 })
