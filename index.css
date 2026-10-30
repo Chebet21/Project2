@@ -5,31 +5,55 @@ body {
 
 }
 
+hr {
+    color: rgb(73, 122, 39);
+    height: 5px;
+    border: none;
+    border-top: 5px solid ;
+}
+
 #top {
     width: fit-content;
-    height: 100px;
+    height: 50px;
+    display: flex;
+    background-color: aquamarine;
+
 }
 
 #header {
     display: flex;
     justify-content: center;
-    background-color: rgba(228, 119, 212, 0.715);
+    background-color: palevioletred;
     margin-bottom: 40px;
+    border-radius: 0px 0px 20px 20px;
 
 }
 
-#search{
-    margin: 10px;
+#sBox {
     display: flex;
-    margin: 10px;
+    background-color: rgb(105, 192, 33);
+    justify-content: center;
+    background-image: url(/CMMphotos/pexels-noon-26459228.jpg);
+    border-radius: 20px 20px 20px 20px;
+}
+
+#searchbox{
+    display: flex;
+    margin: 20px;
+}
+
+
+#search{
+    display: flex;
     justify-content: center;
     background-image: none;
 }
 
 #button {
-    margin: 10px;
+    margin: 40px;
     display: flex;
     justify-content: center;
+    
 }
 
 .button-link {
@@ -38,6 +62,7 @@ body {
     background-color: rgb(139, 184, 91);
     text-decoration: none;
     text-align: center;
+    border-radius: 10px 10px 10px 10px
 }
 
 .button-link:hover {

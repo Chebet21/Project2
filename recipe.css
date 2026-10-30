@@ -11,6 +11,7 @@ body {
     background-color: rgb(139, 184, 91);
     text-decoration: none;
     text-align: center;
+    border-radius: 10px 10px 10px 10px;
 }
 
 .button-link:hover {
@@ -19,4 +20,12 @@ body {
 
 p {
     font-size: larger;
+    display: flex;
+    font-weight: 100;
+}
+#recipebody {
+    background-color: rgb(207, 128, 171);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px 5px 5px 5px;
 }
