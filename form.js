@@ -1,46 +1,29 @@
+const formArray = JSON.parse(localStorage.getItem("userFormData")) || [];
 const form1 = document.getElementById('form1');
- const formArray = [];
 
- 
 
 form1.addEventListener('submit',function(event){
     event.preventDefault();
 
     
-    // const formData = new FormData(form1);
-    // const dataObject = Object.fromEntries(formData.entries());
+    const formData = new FormData(form1);
+    const dataObject = Object.fromEntries(formData.entries());
 
-    // localStorage.setItem("userFormData", JSON.stringify(dataObject));
+    formArray.push(dataObject);
+    
+    localStorage.setItem("userFormData", JSON.stringify(formArray));
 
-    // console.log('Form Submitted Data');
-    // alert('Form data submitted successfully!');
-   
-    const ingredients = document.getElementById('Ingredients');
-    const procedure = document.getElementById('Procedure');
-   
-    const formData = {
-       Ingredients: ingredients,
-       Procedure: procedure
-    }
-    localStorage.setItem('savedFormData', JSON.stringify(formData));
-    formArray.push(ingredients, procedure);
-    alert('Form Data saved');
-    console.log(formArray);
-    window.location.href = "recipe.html";
+    console.log('Form Submitted Data');
+    alert('Form data submitted successfully!');
 
-   
-    form1.reset()
+    form1.reset();
+    console.log("Current storage array:", formArray)
 })
 
-const textarea = document.getElementsByClassName("textarea")
+const ingInput = document.getElementById("ingInput");
 
-textarea.addEventListener('focus', function(){
-    if (this.value === '1. '){
-        this.setSelectionRange(3, 3);
-    }
-});
 
-textarea.addEventListener('keydown', function(e){
+ingInput.addEventListener('keydown', function(e){
     if(e.key === 'Backspace'){
         const pos = this.selectionStart;
         const textBeforeCursor = this.value.substring(0, pos);
@@ -50,35 +33,51 @@ textarea.addEventListener('keydown', function(e){
         }
     }
 
-    if(e.key === 'Enter'){
-        const pos = this.selectionStart;
-        const textBeforeCursor = this.value.substring(0, pos);
-        const lines = textBeforeCursor.split('\n');
-        const currentLine = lines[lines.length - 1];
+if (e.key === 'Enter') {
+  const pos = this.selectionStart;
+  const textBeforeCursor = this.value.substring(0, pos);
+  
+ 
+  const lastNewlineIndex = Math.max(textBeforeCursor.lastIndexOf('\n'), textBeforeCursor.lastIndexOf('\r'));
+  const currentLine = textBeforeCursor.substring(lastNewlineIndex + 1);
+  const cleanedLine = currentLine.trimEnd();
+  
+  const match = cleanedLine.match(/^(\d+)\.\s/);
 
-        const match = currentLine.match(/^\d+\.\s$/);
+  if (match) {
+    e.preventDefault();
+    
+    const currentNum = parseInt(match[1], 10); 
+    const nextNum = currentNum + 1;
+    const nextLinePrefix = `\n${nextNum}. `;
+    
+    const textAfterCursor = this.value.substring(pos);
+    this.value = textBeforeCursor + nextLinePrefix + textAfterCursor;
+    
+    const newCursorPos = pos + nextLinePrefix.length;
+    this.setSelectionRange(newCursorPos, newCursorPos);
+    this.dispatchEvent(new Event('input'));
+  }
+}
 
-        if(match){
-            e.preventDefault();
-
-            const currentNum = parseInt(match[1], 10);
-            const nextNum = currentNum + 1;
-            const nextLinePrefix = `\n${nextNum}. `;
-
-            const textAfterCursor = this.value.substring(pos);
-            this.value = textBeforeCursor + nextLinePrefix + textAfterCursor;
-            
-            const newCursorPos = pos + nextLinePrefix.length;
-            this.setSelectionRange(newCursorPos, newCursorPos);
-            this.dispatchEvent(new Event('input'))
-
-
-        }
-    }
 
 })
 
 
+
+const imageInput = document.getElementById('imageInput');
+const imgPreview = document.getElementById('imgPreview');
+
+imageInput.addEventListener('change', function(){
+    const file = this.file[0];
+
+    if (file){
+        const objectURL = URL.createObjectURL(file);
+
+        imgPreview.src = objectURL;
+        imgPreview.style.display = 'block';
+    }
+})
 
 // let formArray = JSON.parse(localStorage.getItem('formData')) [];  
 
@@ -148,17 +147,4 @@ textarea.addEventListener('keydown', function(e){
 //     }
 // }
 
-const imageInput = document.getElementById('imageInput');
-const imgPreview = document.getElementById('imgPreview');
-
-imageInput.addEventListener('change', function(){
-    const file = this.file[0];
-
-    if (file){
-        const objectURL = URL.createObjectURL(file);
-
-        imgPreview.src = objectURL;
-        imgPreview.style.display = 'block';
-    }
-})
 
