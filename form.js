@@ -2,10 +2,10 @@ const formArray = JSON.parse(localStorage.getItem("userFormData")) || [];
 const form1 = document.getElementById('form1');
 
 
+if (form1) {
 form1.addEventListener('submit',function(event){
     event.preventDefault();
 
-    
     const formData = new FormData(form1);
     const dataObject = Object.fromEntries(formData.entries());
 
@@ -19,6 +19,7 @@ form1.addEventListener('submit',function(event){
     form1.reset();
     console.log("Current storage array:", formArray)
 })
+}
 
 const ingInput = document.getElementById("ingInput");
 
@@ -59,92 +60,8 @@ if (e.key === 'Enter') {
     this.dispatchEvent(new Event('input'));
   }
 }
-
-
 })
-
-
 
 const imageInput = document.getElementById('imageInput');
 const imgPreview = document.getElementById('imgPreview');
-
-imageInput.addEventListener('change', function(){
-    const file = this.file[0];
-
-    if (file){
-        const objectURL = URL.createObjectURL(file);
-
-        imgPreview.src = objectURL;
-        imgPreview.style.display = 'block';
-    }
-})
-
-// let formArray = JSON.parse(localStorage.getItem('formData')) [];  
-
-// function getStoredData() {
-//     const storedData = localStorage.getItem("userFormData")
-
-//     if (storedData) {
-//         const data = JSON.parse(storedData);
-//         console.log('Retrieved data:', data);
-//         return data;
-//     }
-//     console.log('No data found in storage');
-//     return null;
-// }
-
-
-// const ingInput = document.getElementById('Ingredients');
-// const addIngBtn = document.getElementById('add-ing-btn');
-// const inglist = document.getElementById('ing-list');
-
-// function addIngredient(){
-//     const ingText = ingInput.value.trim();
-
-//     if(ingText){
-//         const newIng = document.createElement('li');
-//         newIng.textContent = addIngredient;
-
-//         inglist.appendChild(newIng);
-
-//         ingInput.value = '';
-        
-//     } else{
-//         alert('Please add Ingredient');
-//     }
-
-   
-// }
-
-//  addIngBtn.addEventListener('click', addIngredient);
-
-//     ingInput.addEventListener('keypress', function(event) {
-//         // event.preventDefault()
-//         if (event.key === 'Enter'){
-//             addIngredient()
-//         }
-//     })
-
-
-
-// const prcInput = document.getElementById('Procedure');
-// const addPrcBtn = document.getElementById('add-prc-btn');
-// const prclist = document.getElementById('prc-list');
-
-// function addProcedure(){
-//     const prcText = prcInput.value.trim();
-
-//     if(prcText){
-//         const newPrc = document.createElement('li');
-//         newPrc.textContent = addProcedure;
-
-//         prclist.appendChild(newPrc);
-
-//         prcInput.value = '';
-        
-//     } else{
-//         alert('Please add step');
-//     }
-// }
-
 

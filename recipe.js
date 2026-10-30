@@ -1,8 +1,21 @@
-const storedData = localStorage.getItem("savedFormData");
+document.addEventListener('DOMContentLoaded', function(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedIndex = urlParams.get('index');
+    const formArray = JSON.parse(localStorage.getItem("userFormData")) || [];
 
-if (savedFormData) {
-    const recipeData = JSON.parse(storedData);
+    const recipeTTL = document.getElementById('recipettl');
+    const recipeING = document.getElementById('recipeIng');
+    const recipePRC = document.getElementById('recipePrc');
 
-    document.getElementById("display-Ingredients").textContent = savedFormData.Ingredients
-    document.getElementById("display-Procedure").textContent = savedFormData.Procedure
-}
+    if(selectedIndex !==null && formArray[selectedIndex]) {
+        const activeRecipe = formArray[selectedIndex];
+
+        recipeTTL.textContent = activeRecipe.Title;
+        recipeING.textContent = activeRecipe.Ingredients || 'No Ingredients';
+        recipePRC.textContent = activeRecipe.Precedure || 'No Procedure';
+
+        console.log ("this is what i am seeing", activeRecipe)
+    } else (
+        recipeTTL.textContent = "Recipe not found"
+    )
+})
