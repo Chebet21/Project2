@@ -29,3 +29,7 @@ p {
     padding: 10px;
     border-radius: 5px 5px 5px 5px;
 }
+
+@media (max-width = 750px){
+    
+}
