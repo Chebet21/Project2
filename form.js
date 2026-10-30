@@ -16,8 +16,11 @@ form1.addEventListener('submit',function(event){
     console.log('Form Submitted Data');
     alert('Form data submitted successfully!');
 
+    const newRecipeIndex = formArray.length - 1;
+
     form1.reset();
-    console.log("Current storage array:", formArray)
+    console.log("Current storage array:", formArray);
+    window.location.href = `recipe.html?index=${newRecipeIndex}`;
 })
 }
 
